@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Menu } from 'antd';
 import axios from 'axios';
@@ -7,8 +6,8 @@ import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 function RightMenu(props) {
+  
   const user = useSelector(state => state.user)
-
   const logoutHandler = () => {
     axios.get(`${USER_SERVER}/logout`).then(response => {
       if (response.status === 200) {
@@ -33,8 +32,8 @@ function RightMenu(props) {
   } else {
     return (
       <Menu mode={props.mode}>
-        <Menu.Item key="upload">
-          <a href="/video/upload">Video</a>
+        <Menu.Item key="create">
+          <a href="/video/upload">Upload</a>
         </Menu.Item>
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>Logout</a>
@@ -45,4 +44,3 @@ function RightMenu(props) {
 }
 
 export default withRouter(RightMenu);
-
